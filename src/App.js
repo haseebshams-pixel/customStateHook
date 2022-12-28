@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import useAdvanceState from "./useAdvanceState";
 
 function App() {
+  const [curState, prevState, setAdvanceState] = useAdvanceState(1);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello State Counter</h1>
+      <h4>Current State</h4>
+      <span>{curState}</span>
+      <h4>Previous State</h4>
+      <span>{prevState}</span>
+      <br />
+      <br />
+      <button
+        onClick={() => {
+          let x = curState + 1;
+          setAdvanceState(x);
+        }}
+      >
+        Increment
+      </button>
     </div>
   );
 }
